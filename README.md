@@ -25,7 +25,7 @@ const signature = credentials.signature;
 const address = credentials.address;
 ```
 
-## Casting the signature to Farcaster
+### Casting the signature to Farcaster
 It is now up to the user to post the signature to Farcaster. Until v2 of the protocol, it is probably easiest
 to post from the Merkle Manufactory app. Clients can help the user achieve this by helping them copy the signature
 to the clipboard, and providing an `Open Farcaster` button that will open the Merkle app for the user. Users should make 
