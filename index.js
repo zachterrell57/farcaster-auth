@@ -36,7 +36,7 @@ export async function verifyUser(username, address) {
     throw new Error("Username is required");
   }
   if (address === "" || address === undefined || address === null) {
-    throw new Error("Public key is required");
+    throw new Error("Address is required");
   }
   //This is the address of FarcasterAuth
   const farcasterAddress = "0x156d39254FAb024802da070F4D51CACa1ed48A17";
@@ -64,12 +64,12 @@ export async function verifyUser(username, address) {
     if (mention.timestamp > latest.timestamp) latest = mention;
   });
 
-  //Parse the signature from the message and recover the public key
+  //Parse the signature from the message and recover the address
   const signature = parseSignature(latest.data.castText);
   const recoveredAddress = await recoverAddress(signature);
 
   // If the recovered address is the same as the address of the sender, the user is verified
-  return compareAddress(publicKey, recoveredAddress);
+  return compareAddress(address, recoveredAddress);
 }
 
 export async function generateSignature() {
