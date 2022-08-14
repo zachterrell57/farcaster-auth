@@ -1,9 +1,20 @@
 {
-  "name": "farcaster-auth",
+  "name": "@zachterrell57/farcaster-auth",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zachterrell57/farcaster-auth.git"
+  },
+  "author": {
+    "name": "Zach Terrell",
+    "email": "zachterrell@gmail.com"
+  },
   "dependencies": {
     "ethers": "^5.6.9",
     "got": "^12.2.0"
