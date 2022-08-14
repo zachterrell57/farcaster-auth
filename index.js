@@ -13,8 +13,8 @@ function parseSignature(message) {
   return message.substring(sigStart + 1, sigEnd);
 }
 
-//function that recovers the public key from a signature
-async function recoverPublicKey(signature) {
+//function that recovers the address from a signature
+async function recoverAddress(signature) {
   const messageHash = utils.keccak256(
     //This is the message that was signed
     utils.toUtf8Bytes("This is a message")
@@ -27,15 +27,15 @@ async function recoverPublicKey(signature) {
   }
 }
 
-function comparePublicKeys(recoveredPublicKey, senderPublicKey) {
-  return recoveredPublicKey === senderPublicKey;
+function compareAddress(recoveredAddress, senderAddress) {
+  return recoveredAddress === senderAddress;
 }
 
-export async function verifyUser(username, publicKey) {
+export async function verifyUser(username, address) {
   if (username === "" || username === undefined || username === null) {
     throw new Error("Username is required");
   }
-  if (publicKey === "" || publicKey === undefined || publicKey === null) {
+  if (address === "" || address === undefined || address === null) {
     throw new Error("Public key is required");
   }
   //This is the address of FarcasterAuth
@@ -66,10 +66,10 @@ export async function verifyUser(username, publicKey) {
 
   //Parse the signature from the message and recover the public key
   const signature = parseSignature(latest.data.castText);
-  const recoveredPublicKey = await recoverPublicKey(signature);
+  const recoveredAddress = await recoverAddress(signature);
 
-  // If the recovered public key is the same as the public key of the sender, the user is verified
-  return comparePublicKeys(publicKey, recoveredPublicKey);
+  // If the recovered address is the same as the address of the sender, the user is verified
+  return compareAddress(publicKey, recoveredAddress);
 }
 
 export async function generateSignature() {
