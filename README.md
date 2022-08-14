@@ -14,7 +14,7 @@ yarn add @zachterrell57/farcaster-auth
 
 ## Usage
 
-### Generating a signature and verifying the user
+### Generating a signature
 
 ```js
 import { generateSignature, verifyUser } from '@zachterrell57/farcaster-auth';
