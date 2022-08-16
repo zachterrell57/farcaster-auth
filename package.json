@@ -16,6 +16,7 @@
     "email": "zachterrell@gmail.com"
   },
   "dependencies": {
+    "dotenv": "^16.0.1",
     "ethers": "^5.6.9",
     "got": "^12.2.0"
   }
