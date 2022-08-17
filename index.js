@@ -1,6 +1,6 @@
+import "dotenv/config";
 import got from "got";
 import { Wallet, utils } from "ethers";
-import 'dotenv/config';
 
 const farcasterAddress = process.env.FARCASTER_AUTH_ACCOUNT_ADDRESS || "0x156d39254FAb024802da070F4D51CACa1ed48A17";
 const farcasterUsername = process.env.FARCASTER_AUTH_ACCOUNT_USERNAME || "farcasterauth";
@@ -10,11 +10,11 @@ const notificationsApi = `https://api.farcaster.xyz/v1/notifications?address=${f
 function parseSignature(message) {
   const sigStart = message.indexOf("[");
   if (sigStart === -1) {
-    throw new Error("Malfomed message");
+    throw new Error("Malformed message");
   }
   const sigEnd = message.indexOf("]", sigStart);
   if (sigEnd === -1) {
-    throw new Error("Malfomed message");
+    throw new Error("Malformed message");
   }
   return message.substring(sigStart + 1, sigEnd);
 }
@@ -38,10 +38,10 @@ function compareAddress(recoveredAddress, senderAddress) {
 }
 
 export async function verifyUser(username, address) {
-  if (username === "" || username === undefined || username === null) {
+  if (!username) {
     throw new Error("Username is required");
   }
-  if (address === "" || address === undefined || address === null) {
+  if (!address) {
     throw new Error("Address is required");
   }
   const apiRes = await got(notificationsApi);
@@ -56,7 +56,7 @@ export async function verifyUser(username, address) {
       notification.user.username === username
   );
 
-  if (mentions.length === 0) {
+  if (!mentions.length) {
     throw new Error("No mentions found");
   }
 
