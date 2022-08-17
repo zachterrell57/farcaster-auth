@@ -30,7 +30,7 @@ It is now up to the user to post the signature to Farcaster. Until v2 of the pro
 to post from the Merkle Manufactory app. Clients can help the user achieve this by helping them copy the signature
 to the clipboard, and providing an `Open Farcaster` button that will open the Merkle app for the user. Users should make sure not to edit the signature, as this will result in a failed authentication
 
-This signature might look something like:
+This post might look something like:
 ![IMG_B3C35EE69C68-1](https://user-images.githubusercontent.com/49534342/185194703-4fa8b987-2a4d-4728-9f09-be2436f58e7c.jpeg)
 
 
